@@ -1,2 +1,3 @@
-# DiarySNS-Client
-Client of DiarySNS made with REACT.js
+# DiarySNS-Client main branch
+
+I'm still writing on twit_form ,not main branch
