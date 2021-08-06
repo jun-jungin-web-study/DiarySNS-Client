@@ -1,7 +1,14 @@
 import React from 'react';
-import PostForm from '../components/PostForm';
-import PostCard from '../components/PostCard';
 import AppLayout from '../components/AppLayout';
+import LoginForm from '../components/LoginForm';
+import UserProfile from '../components/UserProfile';
+import MyPostCard from '../components/MyPostCard';
+import MyPostForm from '../components/MyPostForm';
+import { Col, Input, Menu, Row,Avatar} from 'antd';
+import { Components } from 'antd/lib/date-picker/generatePicker';
+import styles from '../components/stylee.module.css'
+import styled from "styled-components";
+import Image from 'next/image'
 
 const dummy = {
   isLoggedIn: true,
@@ -10,9 +17,9 @@ const dummy = {
     id: 1,
     User: {
       id: 1,
-      nickname: '제로초',
+      nickname: 'june',
     },
-    content: '첫 번째 게시글',
+    content: '첫 번째 게시글dddeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeeee',
     Images: [{
       src: 'https://bookthumb-phinf.pstatic.net/cover/137/995/13799585.jpg?udate=20180726',
     }, {
@@ -23,17 +30,79 @@ const dummy = {
   }],
 };
 
+
+
 const Home = () => {
   return (
-    <AppLayout>
-      {dummy.isLoggedIn && <PostForm />}
-      {dummy.mainPosts.map((c) => {
-        return (
-          <PostCard key={c.id} post={c} />
+    <>
+    {dummy.isLoggedIn
+      ? <div style={{backgroundImage: "url('/img/wall1.jpg')"}}>
+        <AppLayout>
+            <UserProfile style={{opacity: 0.4}}/>
+          <Row gutter={[40, 40]} justify="center">
+            <Col span={7}>
+            {dummy.mainPosts.map((c) => {
+            return (
+          <MyPostCard key={c.id} post={c} />
         );
       })}
-    </AppLayout>
+            </Col>
+            
+            <Col span={7}>
+            {dummy.mainPosts.map((c) => {
+            return (
+          <MyPostCard key={c.id} post={c} />
+        );
+      })}
+            </Col>
+            <Col span={7}>
+            {dummy.mainPosts.map((c) => {
+            return (
+          <MyPostCard key={c.id} post={c} />
+        );
+      })}
+            </Col>
+
+            <Col span={7}>
+              dsds
+            </Col>
+            <Col span={7}>
+              dsds
+            </Col>
+            <Col span={7}>
+              sdsd
+            </Col>
+          </Row>
+        </AppLayout>
+        </div>
+      : <div style={{backgroundImage: "url('/img/mail.png')"}}><LoginForm />
+      </div>}
+      
+      <style jsx>{`
+  79          .mainn {
+  80            background-color: red;
+  81          }
+  `}</style>
+  </>
+  
   );
 };
+
+const Container = styled.div`
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+      to right,
+      rgba(20, 20, 20, 0.1) 10%,
+      rgba(20, 20, 20, 0.7) 70%,
+      rgba(20, 20, 20, 1)
+    ),
+    url("../public/img/postit.png");
+  background-size: cover;
+`;
+
 
 export default Home;

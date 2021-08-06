@@ -2,20 +2,21 @@ import React from 'react';
 import Head from 'next/head';
 import PropTypes from 'prop-types';
 import 'antd/dist/antd.css';
+import '../styles/global.css';
 
-const NodeBird = ({ Component }) => {
+const DiarySNS = ({ Component }) => {
   return (
     <>
       <Head>
-        <title>NodeBird</title>
+        <title>DiarySNS</title>
       </Head>
       <Component />
     </>
   );
 };
 
-NodeBird.propTypes = {
+DiarySNS.propTypes = {
   Component: PropTypes.elementType.isRequired,
 };
 
-export default NodeBird;
+export default DiarySNS;

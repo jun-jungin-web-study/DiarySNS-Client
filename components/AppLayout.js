@@ -2,26 +2,24 @@ import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 import { Col, Input, Menu, Row,Avatar } from 'antd';
-import {HomeOutlined} from '@ant-design/icons';
-import LoginForm from './LoginForm';
-import UserProfile from './UserProfile';
+import {TeamOutlined} from '@ant-design/icons';
 
 const dummy = {
   nickname: 'AIM_1535',
   Post: [],
   Followings: [],
   Followers: [],
-  isLoggedIn: true,
+  isLoggedIn: false,
 };
 
 
 const AppLayout = ({ children }) => {
   return (
     <div>
-      <Menu>
+      <Menu  style={{backgroundColor: 'rgba(0, 0, 0, 0.7)'}}>
         <Row>
           <Col span={4} offset={0}>
-            <Menu.Item key="home"><Link href="/"><a>DiarySNS</a></Link></Menu.Item>
+            <Menu.Item key="home"><Link href="/"><a style={{color: 'white'}}>DiarySNS</a></Link></Menu.Item>
           </Col>
           <Col span={8} offset={4}>
             <Menu.Item key="mail">
@@ -29,20 +27,15 @@ const AppLayout = ({ children }) => {
             </Menu.Item>
           </Col>
           <Col span={1} offset={6}>
-            <Menu.Item key="home2"><Link href="/"><HomeOutlined /></Link></Menu.Item>
+            <Menu.Item key="social"><Link href="/social"><TeamOutlined /></Link></Menu.Item>
           </Col>
           <Col span={1} offset={0}>   
-            <Menu.Item key="profile"><Link href="/profile"><Avatar>{dummy.nickname[0]}</Avatar></Link></Menu.Item>
+            <Menu.Item key="profile"><Link href="/"><Avatar>{dummy.nickname[0]}</Avatar></Link></Menu.Item>
           </Col>
         </Row>
       </Menu>
-      <Row gutter={8}>
-        <Col xs={24} md={6}>
-          {dummy.isLoggedIn
-            ? <UserProfile />
-            : <LoginForm />}
-        </Col>
-        <Col xs={24} md={18}>
+      <Row>
+        <Col span={24}>
           {children}
         </Col>
       </Row>
