@@ -2,6 +2,10 @@ import React from 'react';
 import Link from 'next/link';
 import PropTypes from 'prop-types';
 
+
+//포스트잇에 들어가는 글 양식
+
+
 const PostCardContent = ({ postData }) => (
   <div>
     {postData.split(/(#[^\s]+)/g).map((v) => {

@@ -10,21 +10,31 @@ import PostCardContent from './PostCardContent';
 import PostImages from './PostImages';
 import FollowButton from './FollowButton';
 import { urlObjectKeys } from 'next/dist/next-server/lib/utils';
+import { ImgWrapper } from './ImagesZoom/styles';
+
+
+//피드에 뜨는 글 창 양식
+
 
 const dummyComments = [{
   User: {
     nickname: '이정인',
   },
-  content: '이 SNS 좋아요~',
+  content: '좋아요~',
 }, {
   User: {
     nickname: '김동주',
   },
-  content: '빨리 론칭해주세요오오',
-}];
+  content: '멋져요',
+}, {
+    User: {
+      nickname: '김하운',
+    },
+    content: '최고에용!',
+  }];
 
 const CardWrapper = styled.div`
-  margin-bottom: 20px;
+  margin-top: 10px;
 `;
 
 const PostCard = ({ post }) => {
@@ -40,9 +50,9 @@ const PostCard = ({ post }) => {
   }, []);
 
   return (
-    <CardWrapper key={post.id} style={{background: "url('/img/postit.png')"}}>
-      <Card
-        bodyStyle={{border: 0 }}
+    <CardWrapper key={post.id}>
+      <Card style={{backgroundImage: "url('/img/postit.png')",border: 0, backgroundPosition: "center", backgroundColor:"rgba(0,0,0,0)",backgroundRepeat: "no-repeat", backgroundSize: "cover"}}
+        bodyStyle={{border: 0, opacity:0.8 }}
         //cover={post.Images[0] && <PostImages images={post.Images} />}
         actions={[
           liked
@@ -62,14 +72,14 @@ const PostCard = ({ post }) => {
           </Popover>,
         ]}
       >
-        <Card.Meta style={{ height: 300 }}
+        <Card.Meta className="fontset_mypostcontents" style={{ height: 300, marginTop: "60px"}}
           description={<PostCardContent postData={post.content} />}
         />
       </Card>
       {commentFormOpened && (
         <>
           <CommentForm post={post} />
-          <List
+          <List style={{backgroundColor:"rgba(255,255,255,0.5"}}
             header={`${dummyComments.length} 댓글`}
             itemLayout="horizontal"
             dataSource={dummyComments}

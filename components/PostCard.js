@@ -10,17 +10,26 @@ import PostCardContent from './PostCardContent';
 import PostImages from './PostImages';
 import FollowButton from './FollowButton';
 
+
+//피드에 뜨는 글 창 양식
+
+
 const dummyComments = [{
   User: {
-    nickname: 'nero',
+    nickname: '이정인',
   },
-  content: '우와 개정판이 나왔군요~',
+  content: '좋아요~',
 }, {
   User: {
-    nickname: 'hero',
+    nickname: '김동주',
   },
-  content: '얼른 사고싶어요~',
-}];
+  content: '멋져요',
+}, {
+    User: {
+      nickname: '김하운',
+    },
+    content: '최고에용!',
+  }];
 
 const CardWrapper = styled.div`
   margin-bottom: 20px;
@@ -82,6 +91,7 @@ const PostCard = ({ post }) => {
                   author={item.User.nickname}
                   avatar={(
                     <Link href={{ pathname: '/user', query: { id: item.User.id } }} as={`/user/${item.User.id}`}>
+                      {/* 유저들의 프로필을 볼 수 있게 해주는 링크 */}
                       <a><Avatar>{item.User.nickname[0]}</Avatar></a>
                     </Link>
                   )}
